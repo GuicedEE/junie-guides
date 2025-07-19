@@ -1218,11 +1218,3 @@ entity.addClassification("ClassificationType", "ClassificationValue", system, id
 ```
 
 ## References
-
-1. [TypeSafetyGuidelines.md](TypeSafetyGuidelines.md): Guidelines for ensuring type safety when referencing services.
-2. [COMPREHENSIVE_MIGRATION_GUIDE.md](COMPREHENSIVE_MIGRATION_GUIDE.md): Guide for migrating to reactive programming.
-3. [IManageInterfacesReactiveMigrationRules.md](IManageInterfacesReactiveMigrationRules.md): Rules for migrating IManage interfaces to reactive programming.
-4. [interface_hierarchies.md](documentation/interface_hierarchies.md): Documentation of interface hierarchies.
-5. [warehouse_table_hierarchy.md](documentation/warehouse_table_hierarchy.md): Documentation of warehouse table hierarchy.
-6. [querybuilder_scd_hierarchy.md](documentation/querybuilder_scd_hierarchy.md): Documentation of query builder hierarchy.
-7. [pact-rules.md](pact-rules.md): Rules and guidelines for implementing service interfaces.
