@@ -319,11 +319,12 @@ public class MyEntity extends BaseEntity<MyEntity, MyEntity.MyEntityQueryBuilder
             super();
         }
 
-        @Override
-        public Mutiny.Session getEntityManager() {
-            return IGuiceContext.get(Mutiny.SessionFactory.class).getCurrentSession();
-        }
-
+        	@Override
+	public Mutiny.Session getEntityManager()
+	{
+        return IGuiceContext.get(Mutiny.SessionFactory.class)
+                       .getCurrentSession();
+	}
         @Override
         public boolean isIdGenerated() {
             return false;
@@ -344,10 +345,12 @@ public static class MyEntityQueryBuilder extends QueryBuilder<MyEntityQueryBuild
         super();
     }
 
-    @Override
-    public Mutiny.Session getEntityManager() {
-        return IGuiceContext.get(Mutiny.SessionFactory.class).getCurrentSession();
-    }
+    	@Override
+	public Mutiny.Session getEntityManager()
+	{
+        return IGuiceContext.get(Mutiny.SessionFactory.class)
+                       .getCurrentSession();
+	}
 
     @Override
     public boolean isIdGenerated() {
@@ -391,10 +394,12 @@ EntityAssistReactive uses Hibernate Reactive's Mutiny API for reactive database 
 
 To get a session, use the `getEntityManager()` method in your query builder:
 ```java
-@Override
-public Mutiny.Session getEntityManager() {
-    return IGuiceContext.get(Mutiny.SessionFactory.class).getCurrentSession();
-}
+	@Override
+	public Mutiny.Session getEntityManager()
+	{
+        return IGuiceContext.get(Mutiny.SessionFactory.class)
+                       .getCurrentSession();
+	}
 ```
 
 ### Transaction Management

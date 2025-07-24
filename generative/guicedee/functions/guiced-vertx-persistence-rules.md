@@ -534,11 +534,12 @@ public class MyReactiveService
      * Correct implementation of getEntityManager that separates session retrieval from usage.
      * This approach allows for proper session management and ensures sessions are closed.
      */
-    @Override
-    @NotNull
-    public Mutiny.Session getEntityManager() {
-        return IGuiceContext.get(Mutiny.SessionFactory.class, "entityAssistReactive").getCurrentSession();
-    }
+    	@Override
+	public Mutiny.Session getEntityManager()
+	{
+        return IGuiceContext.get(Mutiny.SessionFactory.class)
+                       .getCurrentSession();
+	}
 }
 
 /**
