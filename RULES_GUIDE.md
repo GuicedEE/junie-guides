@@ -21,7 +21,29 @@ The repository is organized into the following main sections:
 
 Located in the `generative/` directory, these guides provide detailed instructions for specific technologies and architectural patterns:
 
-#### 1.1 Angular
+#### 1.1 ActivityMaster
+
+**Purpose**: Provides comprehensive guidelines for integrating with the ActivityMaster system, a Java implementation of a Financial Services Data Model (FSDM) utilizing Guicedee for dependency injection.
+
+**When to Apply**:
+- When working with the ActivityMaster FSDM
+- When implementing financial services applications
+- When integrating with the ActivityMaster ecosystem
+- When building applications that require complex domain modeling
+- When implementing reactive programming patterns with Mutiny
+
+**Key Concepts**:
+- Entity interface hierarchies
+- Query builder patterns
+- Service usage patterns
+- Type safety with generic type parameters
+- Transaction management
+- Reactive programming with Mutiny (Uni<T> and Multi<T>)
+- Domain-specific services and entities
+
+**Location**: `generative/activity-master/activity-master-rules.md`, `generative/activity-master/interface_hierarchies.md`, `generative/activity-master/warehouse_table_hierarchy.md`, `generative/activity-master/warehouse_core_table_hierarchy.md`, `generative/activity-master/querybuilder_scd_hierarchy.md`
+
+#### 1.2 Angular
 
 **Purpose**: Provides guidelines for developing modern, component-based web applications using the Angular framework.
 
@@ -139,6 +161,48 @@ Located in the `generative/` directory, these guides provide detailed instructio
 
 **Location**: `generative/guicedee/`
 
+##### GuicedEE Services
+
+**Purpose**: Provides guidance for consuming and applying JPMS modular libraries produced by the GuicedEE Services project, defining how to use these artifacts instead of their original counterparts.
+
+**When to Apply**:
+- When working with Java Platform Module System (JPMS) in GuicedEE applications
+- When integrating third-party libraries that need proper module descriptors
+- When ensuring compatibility with the module system
+- When managing dependencies with consistent groupId naming conventions
+
+**Key Concepts**:
+- Artifact mapping between original and GuicedEE coordinates
+- Module name conventions
+- Maven dependency management
+- JPMS module requires statements
+- Library categories and their transformations
+
+**Library Categories**:
+1. **Apache** (CXF, Commons, POI)
+2. **Database Drivers** (PostgreSQL, MSSQL, MSAL4J)
+3. **Google Core** (AOP, Guava, Guice extensions)
+4. **Hibernate ORM** (Core, C3P0, JCache, Reactive, Validator)
+5. **JBoss Logging**
+6. **JCache** (Annotations, API, Hazelcast)
+7. **JNI** (Native Interface libraries)
+8. **Jakarta Security**
+9. **Utility Libraries** (BCrypt, Jandex, Javassist, JSON, MapStruct)
+10. **Integration Libraries** (CloudEvents, IBM MQ, RabbitMQ, Kafka)
+11. **Testing Libraries** (Testcontainers)
+12. **Document Processing** (OpenPDF, Swagger)
+13. **MicroProfile** (Config, Metrics)
+14. **Representations** (Excel, JSON, XML)
+15. **Vert.x** (Mutiny, PG Client, RabbitMQ)
+
+**Implementation Notes**:
+- All libraries maintain the same package structure as their original counterparts
+- The shaded artifacts include all transitive dependencies
+- Version alignment is managed through the guicedee-bom
+- Module names typically match the main package of the original library
+
+**Location**: `generative/guicedee/services/services.md`, `generative/guicedee/services/junie.rules.xml`
+
 ##### GuicedEE Function Documentation
 
 The following GuicedEE function documentation files serve as the default rules to follow when this repository is present in another project module:
@@ -252,6 +316,31 @@ When implementing GuicedEE applications, these function documentation files shou
 - Testing with Testcontainers
 - Threading and Event Loop considerations
 
+**General Principles**:
+- Hibernate Reactive is non-blocking and built on top of Vert.x Mutiny API
+- `SessionFactory` must be managed as a singleton
+- All operations must use `Uni<T>` (or `Multi<T>` for streaming)
+- Transactions must be explicitly controlled using `.withTransaction()`
+- Entities must be annotated with `@Entity`, and all mappings must be JPMS module-aware
+- Configuration is done via `hibernate.cfg.xml` or `persistence.xml` (with limitations)
+
+**Transaction Patterns**:
+- Preferred pattern: Use `withTransaction()` to guarantee rollback on failure
+- Manual control (discouraged unless needed): Explicitly manage transaction lifecycle with begin, commit/rollback, and cleanup
+
+**Anti-Patterns**:
+- Do not call `.toCompletableFuture().get()` — defeats non-blocking model
+- Do not manage sessions or transactions manually without `.withTransaction()` unless required
+- Do not share `Mutiny.Session` between threads or across requests
+- Avoid JPA-native lazy loading proxies (prefer DTO pattern or use eager fetch joins)
+
+**Testing Best Practices**:
+- Use Testcontainers to spin up PostgreSQL, MySQL, or MariaDB in isolation
+- Dynamically inject JDBC URL, username, and password into `persistence.xml` using system properties
+- Avoid `H2` unless your tests are not DB-specific
+- Use `.withTransaction(...)` in test setup and teardown
+- Avoid blocking calls (`.get()`, `sleep()`); use `Uni.await().indefinitely()` only for isolated tests
+
 **Location**: `generative/hibernate/hibernate-7-reactive.md`, `generative/hibernate/hibernate-7-upgrade.md`
 
 #### 1.6 Lombok
@@ -336,6 +425,48 @@ When implementing GuicedEE applications, these function documentation files shou
 
 **Location**: `generative/vertx/`
 
+##### Vert.x 5 PostgreSQL Client
+
+**Purpose**: Provides guidelines for using the Vert.x Reactive PostgreSQL Client for efficient, non-blocking database operations.
+
+**When to Apply**:
+- When implementing PostgreSQL database access in Vert.x applications
+- When building reactive applications that require efficient database operations
+- When optimizing connection pooling and query performance
+- When implementing transaction management with PostgreSQL
+
+**Key Concepts**:
+- Connection setup with `PgBuilder` and `PoolOptions`
+- Transaction management
+- Query pipelining for batch efficiency
+- Connection pooling optimization
+- Prepared query caching
+- Resource management
+
+**Location**: `generative/vertx/vertx-5-postgres-client.md`
+
+##### Vert.x 5 TCP EventBus Bridge Integration
+
+**Purpose**: Provides rules, guidance, and implementation strategies for integrating the Vert.x TCP EventBus bridge for secure, efficient, and lightweight asynchronous service communication.
+
+**When to Apply**:
+- When communicating between JVM and non-JVM systems asynchronously
+- When implementing cross-language service integration
+- When building lightweight device integration where HTTP/WebSockets are not feasible
+- When implementing internal high-throughput pub/sub without external brokers
+- When working with GCP-compatible environments
+
+**Key Concepts**:
+- TCP bridge protocol format
+- Bridge message types (send, publish, register, unregister, ping)
+- Permission configuration for inbound and outbound addresses
+- TCP server setup
+- Unix domain socket implementation
+- Message emission and reception
+- Security considerations
+
+**Location**: `generative/vertx/vertx-5-integration-tcp-evenetbus-bridge.md`
+
 ##### Vert.x 5 OAuth2 Authentication
 
 **Purpose**: Provides comprehensive guidelines for implementing OAuth 2.0 authentication and authorization in Vert.x 5 applications.
@@ -379,9 +510,105 @@ When implementing GuicedEE applications, these function documentation files shou
 - Thread context management
 - Anti-patterns to avoid
 
+**General Principles**:
+- Transactions must be explicitly managed; Vert.x does not provide automatic transaction wrapping
+- All blocking code (e.g., JDBC) must be executed inside `executeBlocking` to avoid blocking the event loop
+- All reactive code (e.g., `Pool`, `SqlConnection`) must return `Future<T>` and be chained with proper error handling
+- Event bus consumers should delegate transactional logic to a helper or service method to ensure separation of concerns
+- Transaction boundaries must be clear: Begin → Work → Commit/Rollback → Cleanup
+
+**Blocking Transactions Pattern**:
+- Use a functional interface like `BlockingTransactionCallable<T>` for transaction operations
+- Execute within `vertx.executeBlocking()` to avoid blocking the event loop
+- Ensure proper connection management with try-with-resources
+- Explicitly control transaction boundaries (setAutoCommit, commit, rollback)
+- Handle exceptions and ensure proper cleanup
+
+**Reactive Transactions Pattern**:
+- Use a functional interface like `ReactiveTransactionCallable<T>` for transaction operations
+- Chain operations with `compose()` to maintain the reactive flow
+- Explicitly manage transaction lifecycle (begin, commit/rollback)
+- Use `.eventually()` to guarantee cleanup regardless of success or failure
+- Return `Future<T>` to maintain the non-blocking nature
+
+**Utility Class Approach**:
+- Create utility methods that encapsulate transaction patterns
+- Separate blocking and reactive transaction handling
+- Provide consistent error handling and resource cleanup
+- Allow for customization through functional interfaces
+
+**Anti-Patterns**:
+- Calling JDBC operations directly on the event loop
+- Omitting rollback on error in a transaction block
+- Sharing the same `SqlConnection` across multiple requests
+- Mixing reactive and blocking transaction styles
+
 **Location**: `generative/vertx/vertx-5-transaction-handling.md`
 
-#### 1.9 Web Components
+#### 1.9 JWebMP
+
+**Purpose**: Provides guidelines for developing web applications using JWebMP (Java Web Markup Processor), a powerful Java-based web framework that enables developers to create rich web applications using pure Java code.
+
+**When to Apply**:
+- When building web applications using pure Java code
+- When implementing component-based UI development
+- When creating rich, interactive web interfaces
+- When integrating with Angular for TypeScript generation
+- When leveraging WebAwesome components
+
+**Key Concepts**:
+- Component-based architecture
+- Java-to-HTML/JavaScript conversion
+- Event handling and AJAX functionality
+- Page configuration
+- Client-server communication
+- Vert.x integration
+
+**Location**: `generative/jwebmp/jwebmp_ai_guide.md`
+
+##### JWebMP Angular Integration
+
+**Purpose**: Provides comprehensive information for generating Angular 20 TypeScript applications using JWebMP, allowing developers to create Angular applications using pure Java code that is then compiled to TypeScript.
+
+**When to Apply**:
+- When building Angular applications using Java
+- When implementing TypeScript generation from Java code
+- When creating standalone Angular components
+- When developing Angular services, directives, and modules
+- When integrating with Angular 20's reactive state management
+
+**Key Concepts**:
+- TypescriptClient module for Java-to-TypeScript conversion
+- AngularModule for Angular application configuration
+- Component, service, and directive annotations
+- Dependency injection
+- Reactive state management
+- Angular 20 specific features
+
+**Location**: `generative/jwebmp/jwebmp_angular_ai_guide.md`
+
+##### WebAwesome Components
+
+**Purpose**: Provides guidelines for using WebAwesome components, a comprehensive set of web components that can be used with JWebMP and Angular for building modern, responsive user interfaces.
+
+**When to Apply**:
+- When implementing UI components with JWebMP or Angular
+- When creating consistent design systems
+- When building accessible web interfaces
+- When developing responsive web applications
+- When integrating web components with Angular
+
+**Key Concepts**:
+- Web component architecture
+- Angular component wrappers
+- Attribute binding
+- Content projection
+- Custom styling
+- Component variants and appearances
+
+**Location**: `generative/jwebmp/webawesome/`
+
+#### 1.10 Web Components
 
 **Purpose**: Provides guidelines for component-based UI development using web components standards.
 
