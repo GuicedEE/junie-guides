@@ -1,8 +1,8 @@
-# JunieGuides Rules Reference
+# RulesRepository Rules Reference
 
 ## Introduction
 
-This document serves as the primary reference topic rule for the JunieGuides repository. It facilitates the search for guides relating to projects when this repository is included in an external application. These rules and guides must be referenced by other projects using this set of rules and understood by AI before generating any code.
+This document serves as the primary reference topic rule for the RulesRepository repository. It facilitates the search for guides relating to projects when this repository is included in an external application. These rules and guides must be referenced by other projects using this set of rules and understood by AI before generating any code.
 
 ## Enterprise Scope and Usage
 
@@ -12,7 +12,7 @@ This document serves as the primary reference topic rule for the JunieGuides rep
 - Where to put project rules: Place project artifacts (PACT.md, project RULES.md, GUIDES.md, IMPLEMENTATION.md, etc.) in the host project repository, outside the submodule (for example, under docs/ or at the repository root).
 - Extending/overriding: If a project needs to extend or override guidance, create or update the host project's RULES.md and link to the relevant sections in this repository; do not modify files inside the submodule.
 - Getting started as a submodule (example):
-  - git submodule add <JunieGuides repository URL> docs/junie-guides
+  - git submodule add <RulesRepository repository URL> docs/rules-repository
   - git submodule update --init --recursive
 - Collaboration model: See the repository README.md for principles and the structure of work that define how PACT, RULES, GUIDES, and IMPLEMENTATION artifacts relate.
 
@@ -85,9 +85,20 @@ See generative/jwebmp/webawesome/README.md for a concrete example of an index.
 - Tools Awareness: GPT handles Docs, Diagrams, and Code consistently — including folder packaging when requested.
 - Transparency: If limitations arise, ChatGPT declares them rather than masking or hand-waving.
 
+## 6. Forward-Only Change Policy (No Backwards Compatibility)
+
+- Default stance: Do not preserve backwards compatibility across docs, anchors, APIs, or structures unless the request explicitly requires it for a specific client project.
+- Perform requested changes in full: Apply changes comprehensively in the same change set (files, indexes, links, examples, and references). Avoid partial updates or TODO placeholders.
+- Update references: When removing or renaming content, update or remove all links and indexes that point to it as part of the same change.
+- No legacy shims/anchors: Do not keep duplicate legacy files or anchors only to maintain compatibility.
+- Optional migration notes: When helpful, add brief migration notes in commit messages or an upgrade guide; do not retain legacy artifacts for compatibility.
+- Single source of truth: After changes land, the new artifacts are authoritative.
+
+Note: This policy complements the Document Modularity Policy (Monolith removal) and governs AI generation and human edits alike.
+
 ## Purpose
 
-The JunieGuides repository contains a comprehensive collection of rules, guidelines, and best practices for various technologies, frameworks, and architectural patterns. These guides exist to:
+The RulesRepository repository contains a comprehensive collection of rules, guidelines, and best practices for various technologies, frameworks, and architectural patterns. These guides exist to:
 
 1. Ensure consistency across projects
 2. Promote best practices and patterns
@@ -1104,6 +1115,6 @@ When rules conflict, follow this precedence order:
 
 ## Conclusion
 
-The JunieGuides repository serves as a comprehensive reference for development rules and guidelines. By following these rules, both human developers and AI assistants can create consistent, high-quality code that adheres to best practices while maintaining the flexibility to adapt to specific project requirements.
+The RulesRepository repository serves as a comprehensive reference for development rules and guidelines. By following these rules, both human developers and AI assistants can create consistent, high-quality code that adheres to best practices while maintaining the flexibility to adapt to specific project requirements.
 
 When in doubt, refer to the specific guide for the technology or pattern you're working with, and remember that these rules exist to facilitate development, not to constrain creativity or problem-solving.

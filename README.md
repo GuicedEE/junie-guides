@@ -1,4 +1,4 @@
-# junie-guides
+# RulesRepository
 
 Enterprise-wide rules and guides for AI-assisted and human development. This repository is designed to be consumed as a Git submodule inside client/host projects. It provides the canonical source of truth for shared rules and guides across the organization.
 
@@ -13,11 +13,20 @@ Enterprise-wide rules and guides for AI-assisted and human development. This rep
 
 ```bash
 # Choose an appropriate target folder (e.g., rules/)
-git submodule add <JunieGuides repository URL> rules/
+git submodule add <RulesRepository repository URL> rules/
 git submodule update --init --recursive
 ```
 
 Then reference content from your project's artifacts using relative links (see Structure of Work below).
+
+## Forward-only change policy (no backwards compatibility)
+
+- By default, AI generation and maintainers must not preserve backwards compatibility when applying requested changes.
+- Apply requested changes in full in the same change: update/remove conflicting documents, anchors, examples, indexes, and links.
+- Do not leave stubs or partial updates; provide complete, final artifacts for the new state.
+- Only maintain compatibility if the request explicitly requires it for a specific client project.
+
+See RULES.md — 6. Forward-Only Change Policy for the authoritative statement.
 
 ## 2. Principles
 

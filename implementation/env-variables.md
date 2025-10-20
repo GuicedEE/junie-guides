@@ -1,6 +1,6 @@
 # 🧩 Shared Orchestration Environment Variables
 
-This document defines **project-wide environment variables** to be used across all modules and Cloud Run services in the `ai-experiment` platform. These variables are injected via Terraform, GitHub Actions, and/or container startup configurations.
+This document defines **project-wide environment variables** to be used across all modules and services in your platform. These variables are injected via Terraform, GitHub Actions, and/or container startup configurations.
 
 ---
 
