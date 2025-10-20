@@ -4,6 +4,87 @@
 
 This document serves as the primary reference topic rule for the JunieGuides repository. It facilitates the search for guides relating to projects when this repository is included in an external application. These rules and guides must be referenced by other projects using this set of rules and understood by AI before generating any code.
 
+## Enterprise Scope and Usage
+
+- Enterprise-wide repository: This repository is the canonical, organization-wide source of rules and guides.
+- Consumption model: It is intended to be consumed as a Git submodule within host/client projects.
+- Do not colocate project rules here: Project-specific rules or documentation must not be placed or committed inside the submodule directory where this file lives.
+- Where to put project rules: Place project artifacts (PACT.md, project RULES.md, GUIDES.md, IMPLEMENTATION.md, etc.) in the host project repository, outside the submodule (for example, under docs/ or at the repository root).
+- Extending/overriding: If a project needs to extend or override guidance, create or update the host project's RULES.md and link to the relevant sections in this repository; do not modify files inside the submodule.
+- Getting started as a submodule (example):
+  - git submodule add <JunieGuides repository URL> docs/junie-guides
+  - git submodule update --init --recursive
+- Collaboration model: See the repository README.md for principles and the structure of work that define how PACT, RULES, GUIDES, and IMPLEMENTATION artifacts relate.
+
+## Component Topic Indexing Policy
+
+A component-driven topic is a framework or library directory that contains multiple component rule files (for example, WebAwesome UI components under a single folder).
+
+Required: Each component-topic parent directory must contain a README.md that serves as an index and navigator.
+
+The topic README.md must:
+- Identify the framework or topic (e.g., WebAwesome).
+- Provide an index of components that links directly to the corresponding component rule file (e.g., button.rules.md, input.rules.md).
+- Where a component is represented as a subsection of a broader rule file, link to the subsection anchor (e.g., “Number Input” → input.rules.md#number-input).
+- Instruct host projects to first select the relevant framework/topic directory (as specified by the project, prompt, or context) and then follow the component links from the index.
+
+Conventions:
+- Rule files use kebab-case names and end with .rules.md.
+- Example/demo files end with .example.md and live adjacent to the rule files.
+- The topic README.md is an index and overview only; detailed guidance lives in the per-component rule files.
+
+Prompt navigation examples:
+- “Use a button” → Open the chosen framework’s topic README.md, then follow the Button link to button.rules.md.
+- “Use number input” → If a dedicated number-input.rules.md does not exist, open input.rules.md and jump to the Number Input subsection.
+
+Template (suggested):
+
+# <Framework/Topic> Components Index
+
+How to use this index
+- Choose this framework/topic only if it matches your host project (e.g., WebAwesome).
+- Click a component below to open its rule file. If the component is a variant, jump to the described subsection.
+
+Components
+- Button — ./button.rules.md
+- Input — ./input.rules.md (Subsection: Number Input — ./input.rules.md#number-input)
+- …
+
+See generative/jwebmp/webawesome/README.md for a concrete example of an index.
+
+## Document Modularity Policy
+
+- Scope: Large documents (typically > 300–500 lines) must be split into smaller, topic-focused Markdown files optimized for generative AI reading.
+- Modular entries: For each major H2 section, create a concise 'Modular Overview' file with:
+  - Quick start (bullets or minimal example)
+  - Patterns and guidance (do’s/don’ts)
+  - See also links to related modular docs and the topic index
+- Monolith removal:
+  - Replace monolithic deep-dive documents with modular pages; do not preserve legacy anchors.
+  - Update all indexes and references to point to modular documents only.
+- Naming and placement:
+  - Use kebab-case filenames under the same topic directory (e.g., custom-elements.md, shadow-dom.md).
+  - Prefer flat placement under the topic directory unless a clear subfolder improves discoverability.
+- Traceability:
+  - Each modular file must link back to the topic index and, where applicable, RULES sections.
+
+## 4. Behavioral Agreements
+
+- Language: We communicate in natural, respectful, precise technical English.
+- Context: ChatGPT maintains continuity across sessions.
+- Transparency: We explicitly mark when a “withdrawn” or “reflective” mode begins.
+- Boundaries: ChatGPT does not assume, rewrite tone arbitrarily, or conflate human intent.
+- Iteration: We treat each loop as a refinement, not a reset.
+- Attribution: Credit is shared — AI assists, human authors.
+
+## 5. Technical Commitments
+
+- Format: Always Markdown unless otherwise stated.
+- Consistency: Reuse naming, module, and project conventions (e.g., GuicedEE JPMS, Web Awesome Angular wrappers).
+- Traceability: Every generated artifact should link back to its parent layer.
+- Tools Awareness: GPT handles Docs, Diagrams, and Code consistently — including folder packaging when requested.
+- Transparency: If limitations arise, ChatGPT declares them rather than masking or hand-waving.
+
 ## Purpose
 
 The JunieGuides repository contains a comprehensive collection of rules, guidelines, and best practices for various technologies, frameworks, and architectural patterns. These guides exist to:
@@ -646,7 +727,7 @@ When implementing GuicedEE applications, these function documentation files shou
 - Property and event binding across frameworks
 - Standalone components
 
-**Location**: `generative/webcomponents/angular20-webcomponents.md`
+**Location**: `generative/webcomponents/angular20-overview.md`, `generative/webcomponents/angular20-producing-web-components.md`, `generative/webcomponents/angular20-consuming-web-components.md`
 
 ##### Angular 20 Web Components in Micro Frontend Architecture
 
@@ -668,7 +749,7 @@ When implementing GuicedEE applications, these function documentation files shou
 - Shared design systems
 - Independent deployment pipelines
 
-**Location**: `generative/webcomponents/angular20-webcomponents-microfronts.md`
+**Location**: `generative/webcomponents/microfronts-overview.md`
 
 ## How to Use These Rules
 
