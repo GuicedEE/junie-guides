@@ -50,7 +50,41 @@ Components
 - Input — ./input.rules.md (Subsection: Number Input — ./input.rules.md#number-input)
 - …
 
-See generative/jwebmp/webawesome/README.md for a concrete example of an index.
+See generative/frontend/webawesome/README.md for a concrete example of an index.
+
+## Generative Topic Taxonomy
+
+Authoritative categories for topics under generative/:
+
+- generative/frontend/
+  - webcomponents/
+  - angular/
+  - webawesome/
+  - jwebmp/
+- generative/backend/
+  - hibernate/
+  - vertx/
+  - mapstruct/
+  - logging/
+  - guicedee/
+  - lombok/
+- generative/data/
+  - database/
+  - entityassist/ (future)
+- generative/architecture/
+  - ddd/
+  - microfronts/
+  - activity-master/
+- generative/platform/ (optional now)
+  - ci-cd/
+  - observability/
+  - secrets-config/
+
+Indexing rule: Each category and each topic MUST provide a README.md that serves as an index and navigator.
+
+Policy amendment: The Component Topic Indexing Policy supports an optional category level between generative/ and the topic directory (e.g., generative/frontend/webawesome/). Update any links and examples accordingly when reorganizing.
+
+Note: GuicedEE and Lombok are included under the Backend category (generative/backend/guicedee/ and generative/backend/lombok/). Platform-oriented implementation guides live under generative/platform/ (e.g., ci-cd/, observability/, secrets-config/).
 
 ## Document Modularity Policy
 
@@ -133,7 +167,7 @@ Located in the `generative/` directory, these guides provide detailed instructio
 - Reactive programming with Mutiny (Uni<T> and Multi<T>)
 - Domain-specific services and entities
 
-**Location**: `generative/activity-master/activity-master-rules.md`, `generative/activity-master/interface_hierarchies.md`, `generative/activity-master/warehouse_table_hierarchy.md`, `generative/activity-master/warehouse_core_table_hierarchy.md`, `generative/activity-master/querybuilder_scd_hierarchy.md`
+**Location**: `generative/architecture/activity-master/activity-master-rules.md`, `generative/architecture/activity-master/interface_hierarchies.md`, `generative/architecture/activity-master/warehouse_table_hierarchy.md`, `generative/architecture/activity-master/warehouse_core_table_hierarchy.md`, `generative/architecture/activity-master/querybuilder_scd_hierarchy.md`
 
 #### 1.2 Angular
 
@@ -192,7 +226,7 @@ Located in the `generative/` directory, these guides provide detailed instructio
 - Domain events
 - Ubiquitous language
 
-**Location**: `generative/ddd/domaindrivendesign.md`
+**Location**: `generative/architecture/ddd/domaindrivendesign.md`
 
 ##### Microfrontends in DDD
 
@@ -213,7 +247,7 @@ Located in the `generative/` directory, these guides provide detailed instructio
 - Strategic design patterns for frontend composition
 - Domain-aligned decomposition of UI
 
-**Location**: `generative/ddd/microfronts.md`
+**Location**: `generative/architecture/ddd/microfronts.md`
 
 #### 1.3 Entity Assist
 
@@ -232,7 +266,7 @@ Located in the `generative/` directory, these guides provide detailed instructio
 - Transaction management
 - Integration with GuicedInjection
 
-**Location**: `generative/entity-assist/entity-assist-reactive-rules.md`
+**Location**: `generative/data/entityassist/entity-assist-reactive-rules.md`
 
 #### 1.4 GuicedEE
 
@@ -251,7 +285,7 @@ Located in the `generative/` directory, these guides provide detailed instructio
 - Lifecycle management
 - Integration with other technologies
 
-**Location**: `generative/guicedee/`
+**Location**: `generative/backend/guicedee/`
 
 ##### GuicedEE Services
 
@@ -293,7 +327,7 @@ Located in the `generative/` directory, these guides provide detailed instructio
 - Version alignment is managed through the guicedee-bom
 - Module names typically match the main package of the original library
 
-**Location**: `generative/guicedee/services/services.md`, `generative/guicedee/services/junie.rules.xml`
+**Location**: `generative/backend/guicedee/services/services.md`, `generative/backend/guicedee/services/junie.rules.xml`
 
 ##### GuicedEE Function Documentation
 
@@ -301,61 +335,61 @@ The following GuicedEE function documentation files serve as the default rules t
 
 ###### Core Injection Framework
 
-**GuicedInjection** (`generative/guicedee/functions/guiced-injection-rules.md`):
+**GuicedInjection** (`generative/backend/guicedee/functions/guiced-injection-rules.md`):
 - **Purpose**: Provides comprehensive guidelines for using the GuicedInjection framework, the core dependency injection system of GuicedEE.
 - **When to Apply**: When implementing dependency injection, service discovery, or lifecycle management in GuicedEE applications.
 - **Key Features**: SPI implementation, module configuration, lifecycle management, job management.
 
-**GuicedInjection Framework Guidelines** (`generative/guicedee/functions/guiced-injection-rules.md`):
+**GuicedInjection Framework Guidelines** (`generative/backend/guicedee/functions/guiced-injection-rules.md`):
 - **Purpose**: Provides detailed guidelines for using the GuicedInjection framework, including package structure, SPI implementation, module configuration, and best practices.
 - **When to Apply**: When developing modular applications with GuicedEE, implementing service discovery, managing application lifecycle, or integrating with Vert.x.
 - **Key Features**: CRTP (Curiously Recurring Template Pattern), SPI interfaces and implementations, module configuration with JPMS, lifecycle hooks, integration with Vert.x, testing with Guice.
 
 ###### Vert.x Integration
 
-**GuicedVertx** (`generative/guicedee/functions/guiced-vertx-rules.md`):
+**GuicedVertx** (`generative/backend/guicedee/functions/guiced-vertx-rules.md`):
 - **Purpose**: Outlines the recommended package structure and usage guidelines for the GuicedVertx module.
 - **When to Apply**: When integrating Vert.x with GuicedEE applications for reactive, event-driven functionality.
 - **Key Features**: Event bus integration, verticle configuration, Vert.x 5 migration.
 
-**GuicedVertxPersistence** (`generative/guicedee/functions/guiced-vertx-persistence-rules.md`):
+**GuicedVertxPersistence** (`generative/backend/guicedee/functions/guiced-vertx-persistence-rules.md`):
 - **Purpose**: Provides guidelines for database connectivity and ORM capabilities using Vert.x and Hibernate Reactive.
 - **When to Apply**: When implementing database access in GuicedEE applications with reactive patterns.
 - **Key Features**: Database module creation, connection configuration, reactive mode, transaction management.
 
-**GuicedVertxRest** (`generative/guicedee/functions/guiced-vertx-rest-rules.md`):
+**GuicedVertxRest** (`generative/backend/guicedee/functions/guiced-vertx-rest-rules.md`):
 - **Purpose**: Defines patterns for building RESTful APIs with Vert.x in GuicedEE applications.
 - **When to Apply**: When creating REST endpoints and API services in GuicedEE applications.
 - **Key Features**: REST endpoint definition, request/response handling, authentication integration.
 
-**GuicedVertxSockets** (`generative/guicedee/functions/guiced-vertx-sockets-rules.md`):
+**GuicedVertxSockets** (`generative/backend/guicedee/functions/guiced-vertx-sockets-rules.md`):
 - **Purpose**: Provides guidelines for implementing WebSocket functionality with Vert.x.
 - **When to Apply**: When adding real-time communication capabilities to GuicedEE applications.
 - **Key Features**: WebSocket handlers, socket event processing, client-server communication.
 
-**GuicedVertxWeb** (`generative/guicedee/functions/guiced-vertx-web-rules.md`):
+**GuicedVertxWeb** (`generative/backend/guicedee/functions/guiced-vertx-web-rules.md`):
 - **Purpose**: Outlines patterns for web application development with Vert.x Web.
 - **When to Apply**: When building web applications or web interfaces with GuicedEE.
 - **Key Features**: Route configuration, template rendering, static resource handling, form processing.
 
 ###### Integration Technologies
 
-**GuicedHibernate** (`generative/guicedee/functions/guiced-hibernate-rules.md`):
+**GuicedHibernate** (`generative/backend/guicedee/functions/guiced-hibernate-rules.md`):
 - **Purpose**: Provides guidelines for integrating Hibernate ORM with GuicedEE.
 - **When to Apply**: When implementing traditional (non-reactive) database access in GuicedEE applications.
 - **Key Features**: Entity configuration, session management, transaction handling, query optimization.
 
-**GuicedRabbit** (`generative/guicedee/functions/guiced-rabbit-rules.md`):
+**GuicedRabbit** (`generative/backend/guicedee/functions/guiced-rabbit-rules.md`):
 - **Purpose**: Outlines patterns for integrating RabbitMQ messaging with GuicedEE.
 - **When to Apply**: When implementing message queuing and asynchronous communication in GuicedEE applications.
 - **Key Features**: Queue configuration, message publishing, message consumption, error handling.
 
-**GuicedCerial** (`generative/guicedee/functions/guiced-cerial-rules.md`):
+**GuicedCerial** (`generative/backend/guicedee/functions/guiced-cerial-rules.md`):
 - **Purpose**: Provides guidelines for serial port communication in GuicedEE applications.
 - **When to Apply**: When interfacing with hardware devices via serial ports in GuicedEE applications.
 - **Key Features**: Port configuration, data transmission, event handling, error recovery.
 
-**GuicedSwaggerOpenAPI** (`generative/guicedee/functions/guiced-swagger-openapi-rules.md`):
+**GuicedSwaggerOpenAPI** (`generative/backend/guicedee/functions/guiced-swagger-openapi-rules.md`):
 - **Purpose**: Defines patterns for API documentation using Swagger/OpenAPI in GuicedEE applications.
 - **When to Apply**: When documenting REST APIs built with GuicedEE.
 - **Key Features**: API documentation, schema definition, endpoint documentation, UI configuration.
@@ -364,7 +398,7 @@ When implementing GuicedEE applications, these function documentation files shou
 
 ###### Representations
 
-**Representations in GuicedEE** (`generative/guicedee/services/representations.md`):
+**Representations in GuicedEE** (`generative/backend/guicedee/services/representations.md`):
 - **Purpose**: Provides guidelines for implementing domain-driven interfaces that produce object representations of specified types, following the Curiously Recurring Template Pattern (CRTP).
 - **When to Apply**: When converting between domain objects and various representation formats (JSON, XML, Excel) while maintaining type safety and domain-driven design principles.
 - **Key Features**: Domain-driven interfaces, CRTP for type-safe fluent interfaces, JSON/XML/Excel representation, custom serializers and deserializers, consistent conversion interfaces.
@@ -386,7 +420,7 @@ When implementing GuicedEE applications, these function documentation files shou
 - Transaction handling
 - Caching mechanisms
 
-**Location**: `generative/hibernate/`
+**Location**: `generative/backend/hibernate/`
 
 ##### Hibernate 7 Reactive
 
@@ -433,7 +467,7 @@ When implementing GuicedEE applications, these function documentation files shou
 - Use `.withTransaction(...)` in test setup and teardown
 - Avoid blocking calls (`.get()`, `sleep()`); use `Uni.await().indefinitely()` only for isolated tests
 
-**Location**: `generative/hibernate/hibernate-7-reactive.md`, `generative/hibernate/hibernate-7-upgrade.md`
+**Location**: `generative/backend/hibernate/hibernate-7-reactive.md`, `generative/backend/hibernate/hibernate-7-upgrade.md`
 
 #### 1.6 Lombok
 
@@ -452,7 +486,7 @@ When implementing GuicedEE applications, these function documentation files shou
 - Configuration options
 - Common pitfalls and solutions
 
-**Location**: `generative/lombok/`
+**Location**: `generative/backend/lombok/`
 
 #### 1.7 MapStruct
 
@@ -471,7 +505,7 @@ When implementing GuicedEE applications, these function documentation files shou
 - Inheritance mapping
 - Integration with dependency injection
 
-**Location**: `generative/mapstruct/`
+**Location**: `generative/backend/mapstruct/`
 
 ##### MapStruct 6
 
@@ -496,7 +530,7 @@ When implementing GuicedEE applications, these function documentation files shou
 - Update methods
 - Integration with CDI and Spring
 
-**Location**: `generative/mapstruct/mapstruct-6.md`
+**Location**: `generative/backend/mapstruct/mapstruct-6.md`
 
 #### 1.8 Vert.x
 
@@ -515,7 +549,7 @@ When implementing GuicedEE applications, these function documentation files shou
 - Reactive programming
 - Non-blocking I/O
 
-**Location**: `generative/vertx/`
+**Location**: `generative/backend/vertx/`
 
 ##### Vert.x 5 PostgreSQL Client
 
@@ -535,7 +569,7 @@ When implementing GuicedEE applications, these function documentation files shou
 - Prepared query caching
 - Resource management
 
-**Location**: `generative/vertx/vertx-5-postgres-client.md`
+**Location**: `generative/backend/vertx/vertx-5-postgres-client.md`
 
 ##### Vert.x 5 TCP EventBus Bridge Integration
 
@@ -557,7 +591,7 @@ When implementing GuicedEE applications, these function documentation files shou
 - Message emission and reception
 - Security considerations
 
-**Location**: `generative/vertx/vertx-5-integration-tcp-evenetbus-bridge.md`
+**Location**: `generative/backend/vertx/vertx-5-integration-tcp-evenetbus-bridge.md`
 
 ##### Vert.x 5 OAuth2 Authentication
 
@@ -579,7 +613,7 @@ When implementing GuicedEE applications, these function documentation files shou
 - JWT validation
 - Integration with identity providers
 
-**Location**: `generative/vertx/vertx-5-oauth2-flow-guide.md`
+**Location**: `generative/backend/vertx/vertx-5-oauth2-flow-guide.md`
 
 ##### Vert.x 5 Transaction Handling
 
@@ -635,7 +669,7 @@ When implementing GuicedEE applications, these function documentation files shou
 - Sharing the same `SqlConnection` across multiple requests
 - Mixing reactive and blocking transaction styles
 
-**Location**: `generative/vertx/vertx-5-transaction-handling.md`
+**Location**: `generative/backend/vertx/vertx-5-transaction-handling.md`
 
 #### 1.9 JWebMP
 
@@ -656,7 +690,7 @@ When implementing GuicedEE applications, these function documentation files shou
 - Client-server communication
 - Vert.x integration
 
-**Location**: `generative/jwebmp/jwebmp_ai_guide.md`
+**Location**: `generative/frontend/jwebmp/jwebmp_ai_guide.md`
 
 ##### JWebMP Angular Integration
 
@@ -677,7 +711,7 @@ When implementing GuicedEE applications, these function documentation files shou
 - Reactive state management
 - Angular 20 specific features
 
-**Location**: `generative/jwebmp/jwebmp_angular_ai_guide.md`
+**Location**: `generative/frontend/jwebmp/jwebmp_angular_ai_guide.md`
 
 ##### WebAwesome Components
 
@@ -698,7 +732,7 @@ When implementing GuicedEE applications, these function documentation files shou
 - Custom styling
 - Component variants and appearances
 
-**Location**: `generative/jwebmp/webawesome/`
+**Location**: `generative/frontend/webawesome/`
 
 #### 1.10 Web Components
 
@@ -717,7 +751,7 @@ When implementing GuicedEE applications, these function documentation files shou
 - Component lifecycle
 - Integration with frameworks
 
-**Location**: `generative/webcomponents/`
+**Location**: `generative/frontend/webcomponents/`
 
 ##### Angular 20 Web Components
 
@@ -738,7 +772,7 @@ When implementing GuicedEE applications, these function documentation files shou
 - Property and event binding across frameworks
 - Standalone components
 
-**Location**: `generative/webcomponents/angular20-overview.md`, `generative/webcomponents/angular20-producing-web-components.md`, `generative/webcomponents/angular20-consuming-web-components.md`
+**Location**: `generative/frontend/webcomponents/angular20-overview.md`, `generative/frontend/webcomponents/angular20-producing-web-components.md`, `generative/frontend/webcomponents/angular20-consuming-web-components.md`
 
 ##### Angular 20 Web Components in Micro Frontend Architecture
 
@@ -760,7 +794,7 @@ When implementing GuicedEE applications, these function documentation files shou
 - Shared design systems
 - Independent deployment pipelines
 
-**Location**: `generative/webcomponents/microfronts-overview.md`
+**Location**: `generative/frontend/webcomponents/microfronts-overview.md`
 
 ## How to Use These Rules
 

@@ -52,16 +52,16 @@ When approved, execute the plan as one change set.
 3. Create/Update project RULES.md (outside submodule):
    - Declare scope, chosen stacks, and any project-specific conventions.
    - Link to relevant topic indexes:
-     - rules/generative/webcomponents/README.md
-     - rules/generative/hibernate/README.md
-     - rules/generative/jwebmp/webawesome/README.md
+     - rules/generative/frontend/webcomponents/README.md
+     - rules/generative/backend/hibernate/README.md
+     - rules/generative/frontend/webawesome/README.md
 4. Create/Update GUIDES.md with links to chosen modular entries (e.g., Hibernate transactions, CRUD; Web Components custom-elements/shadow-dom; Angular producing/consuming; WebAwesome Button/Input rules).
 5. Create/Update IMPLEMENTATION.md explaining current modules, code layout, and back-links to guides.
 6. Refactor legacy docs to modular model where feasible:
    - Split overly large monoliths into focused docs or replace with links to the submodule’s modular entries (preferred).
    - Remove deprecated/duplicate documents per Forward-Only policy; update all inbound links.
 7. Environment alignment
-   - Create or update .env.example using rules/implementation/env-variables.md as the source of truth.
+   - Create or update .env.example using rules/generative/platform/secrets-config/env-variables.md as the source of truth.
 8. CI alignments
    - Add/update minimal GitHub Actions workflows for build/test and document required secrets.
 9. README updates

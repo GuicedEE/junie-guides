@@ -58,9 +58,9 @@ Perform as a single, forward-only change set. The exact target paths depend on y
 
 4. Cross-links to enterprise topics
    - Link to relevant RulesRepository indexes in your README to aid host projects:
-     - Web Components: rules/generative/webcomponents/README.md
-     - Hibernate 7 Reactive: rules/generative/hibernate/README.md
-     - WebAwesome example index: rules/generative/jwebmp/webawesome/README.md
+     - Web Components: rules/generative/frontend/webcomponents/README.md
+     - Hibernate 7 Reactive: rules/generative/backend/hibernate/README.md
+     - WebAwesome example index: rules/generative/frontend/webawesome/README.md
 
 5. Versioning and release notes
    - If rules reorganization is breaking (likely under forward-only), prepare RELEASE_NOTES.md summarizing changes.

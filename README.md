@@ -1,6 +1,6 @@
 # RulesRepository
 
-Enterprise-wide rules and guides for AI-assisted and human development. This repository is designed to be consumed as a Git submodule inside client/host projects. It provides the canonical source of truth for shared rules and guides across the organization.
+Enterprise-wide rules and guides for AI-assisted and human development. This repository is designed to be consumed as a Git submodule inside client/host projects. It provides a versioned canonical source of truth for shared rules and guides across the organization.
 
 ## Enterprise usage and placement rules
 
@@ -96,22 +96,34 @@ By following the above, client projects retain local autonomy while staying alig
 
 
 ## Component topic indexes
-
 Component-driven rule subsets provide a parent README.md that indexes components and links to their rule files and relevant subsections. Choose the framework/topic that matches your host project, then navigate via the index.
 
-Example: WebAwesome components index — generative/jwebmp/webawesome/README.md
-- “button” → generative/jwebmp/webawesome/button.rules.md
-- “number input” → generative/jwebmp/webawesome/input.rules.md#number-input
+Example: WebAwesome components index — generative/frontend/webawesome/README.md
+- “button” → generative/frontend/webawesome/button.rules.md
+- “number input” → generative/frontend/webawesome/input.rules.md#number-input
 
-Example: Web Components topic index — generative/webcomponents/README.md
-- “custom elements” → generative/webcomponents/custom-elements.md
-- “Angular 20 Web Components guide” → generative/webcomponents/angular20-overview.md
+Example: Web Components topic index — generative/frontend/webcomponents/README.md
+- “custom elements” → generative/frontend/webcomponents/custom-elements.md
+- “Angular 20 Web Components guide” → generative/frontend/webcomponents/angular20-overview.md
 
-Example: Hibernate 7 Reactive topic index — generative/hibernate/README.md
-- “transactions” → generative/hibernate/hibernate-7-reactive-transactions.md
-- “CRUD” → generative/hibernate/hibernate-7-reactive-crud.md
-- “Testcontainers setup” → generative/hibernate/hibernate-7-reactive-testing.md
+Example: Hibernate 7 Reactive topic index — generative/backend/hibernate/README.md
+- “transactions” → generative/backend/hibernate/hibernate-7-reactive-transactions.md
+- “CRUD” → generative/backend/hibernate/hibernate-7-reactive-crud.md
+- “Testcontainers setup” → generative/backend/hibernate/hibernate-7-reactive-testing.md
 
+### Prompt → Path Resolution Examples
+- “WebAwesome button” → generative/frontend/webawesome/button.rules.md
+- “Number input (WebAwesome)” → generative/frontend/webawesome/input.rules.md#number-input
+- “Custom elements” → generative/frontend/webcomponents/custom-elements.md
+- “Angular 20 consuming web components” → generative/frontend/webcomponents/angular20-consuming-web-components.md
+- “Hibernate 7 Reactive transactions” → generative/backend/hibernate/hibernate-7-reactive-transactions.md
+- “Postgres setup docs” → generative/data/database/postgres-database.md
+
+### Platform guides
+- Platform category index — generative/platform/README.md
+- Env variables reference — generative/platform/secrets-config/env-variables.md
+- Health endpoints conventions — generative/platform/observability/health.md
+- Terraform examples — generative/platform/ci-cd/terraform/
 
 ## Behavioral agreements and technical commitments
 
@@ -120,3 +132,11 @@ For collaboration norms and generation guarantees, see:
 - RULES.md — 5. Technical Commitments
 
 These govern language, continuity, transparency, boundaries, iteration, attribution, formatting, consistency, traceability, tool handling, and limitation disclosure.
+
+
+## Operational prompts and checklists
+
+To execute the generative/ taxonomy restructure, use the following root-level artifacts:
+- PROMPT_RESTRUCTURE_GENERATIVE.md — AI execution prompt for restructuring `generative/` into category taxonomy (forward-only).
+- TODO_GENERATIVE_TAXONOMY_RESTRUCTURE.md — maintainer TODO with step-by-step tasks.
+- CHECKLIST_GENERATIVE_TAXONOMY_VALIDATION.md — validation checklist and link integrity steps.

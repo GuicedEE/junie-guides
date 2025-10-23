@@ -69,8 +69,8 @@ Produce the following changes as a single, forward-only change set.
      - Declare project scope, overrides, chosen stacks.
      - Link to submodule topics you selected (examples below).
    - GUIDES.md — entry index for project guides:
-     - Backend picks: link to rules/generative/hibernate/README.md, rules/generative/ddd/, etc.
-     - Frontend picks: link to rules/generative/webcomponents/README.md or rules/generative/jwebmp/webawesome/README.md.
+     - Backend picks: link to rules/generative/backend/hibernate/README.md, rules/generative/architecture/ddd/, etc.
+     - Frontend picks: link to rules/generative/frontend/webcomponents/README.md or rules/generative/frontend/webawesome/README.md.
    - IMPLEMENTATION.md — describe initial modules, code layout, and back-links to relevant guides.
 
 3. Establish directory structure
@@ -81,7 +81,7 @@ Produce the following changes as a single, forward-only change set.
    - Ensure README.md links to each artifact and the submodule.
 
 4. Environment and configuration
-   - Copy or reference env variables: rules/implementation/env-variables.md
+   - Copy or reference env variables: rules/generative/platform/secrets-config/env-variables.md
    - Create .env.example aligned with env-variables.md
 
 5. CI/CD (if selected)
@@ -89,14 +89,14 @@ Produce the following changes as a single, forward-only change set.
 
 6. Topic-specific link wiring (examples)
    - Web Components
-     - rules/generative/webcomponents/README.md
+     - rules/generative/frontend/webcomponents/README.md
      - custom-elements.md, shadow-dom.md, html-templates.md, es-modules.md
    - Angular 20 + Web Components
      - angular20-overview.md, angular20-producing-web-components.md, angular20-consuming-web-components.md, microfronts-overview.md
    - Hibernate 7 Reactive
-     - rules/generative/hibernate/README.md and modular entries (setup, transactions, CRUD, testing, threading, anti-patterns)
+     - rules/generative/backend/hibernate/README.md and modular entries (setup, transactions, CRUD, testing, threading, anti-patterns)
    - WebAwesome components
-     - rules/generative/jwebmp/webawesome/README.md (e.g., button.rules.md, input.rules.md#number-input)
+     - rules/generative/frontend/webawesome/README.md (e.g., button.rules.md, input.rules.md#number-input)
 
 7. Licensing and repo housekeeping
    - Ensure LICENSE is set (<LICENSE>)
@@ -114,7 +114,7 @@ Produce the following changes as a single, forward-only change set.
 - [ ] PACT.md created with project details and cross-links
 - [ ] Project RULES.md created referencing enterprise RULES and chosen topics
 - [ ] GUIDES.md and IMPLEMENTATION.md created with proper back/forward links
-- [ ] Env: .env.example or env notes aligned to rules/implementation/env-variables.md
+- [ ] Env: .env.example or env notes aligned to rules/generative/platform/secrets-config/env-variables.md
 - [ ] CI file added (if selected)
 - [ ] README updated with architecture, links, and instructions
 - [ ] All links resolve; no files placed inside the submodule directory
