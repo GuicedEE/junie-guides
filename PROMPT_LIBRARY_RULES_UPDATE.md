@@ -1,6 +1,6 @@
 # 🧰 Starter Prompt — Library Rules Update (Framework/Component Libraries)
 
-Use this prompt when you maintain a library (e.g., JWebMP, EntityAssist, WebAwesome) and need to update or (re)create its rules, indexes, and guides to align with the RulesRepository. This drives a forward-only, modular documentation model and ensures host projects can navigate component/topic rules easily.
+Use this prompt when you maintain a library (e.g., JWebMP, EntityAssist, WebAwesome) and need to update or (re)create its rules, indexes, and guides to align with the Rules Repository. This drives a forward-only, modular documentation model and ensures host projects can navigate component/topic rules easily.
 
 Supported: JetBrains AI (Junie), GitHub Copilot Chat, Cursor, ChatGPT, Claude.
 
@@ -9,14 +9,14 @@ Supported: JetBrains AI (Junie), GitHub Copilot Chat, Cursor, ChatGPT, Claude.
 ## 0) Provide Inputs
 Fill before running.
 
-- Library name: <LIBRARY_NAME>
-- Current/new version: <VERSION>
-- Repository URL / path: <REPO_URL_OR_PATH>
-- Short description: <ONE_LINE_DESCRIPTION>
-- Type: [ ] UI component library  [ ] Data/ORM  [ ] Service/Framework  [ ] Other: <OTHER>
-- Primary language(s): <LANGUAGES>
-- Component/topic areas (list): <TOPICS>
-- AI engine used: [ ] JetBrains Junie  [ ] GitHub Copilot  [ ] Cursor  [ ] ChatGPT  [ ] Claude
+- Library name: GuicedEE
+- Current/new version: 2.0.0-SNAPSHOT
+- Repository URL / path: https://github.com/GuicedEE/GuicedEE
+- Short description: An Enterprise Environment provided with Guice DI for Java/Kotlin Applications to use reactively
+- Type: [ ] UI component library  [ ] Data/ORM  [X] Service/Framework  [ ] Other: <OTHER>
+- Primary language(s): Java 21/25
+- Component/topic areas (list): DI/Vert.X/Hibernate/MicroProfile/Serial Ports (Guiced Cerial)/Hazelcast/Hibernate/RabbitMQ/Swagger/Telemetry/WebSockets
+- AI engine used: [X] JetBrains Junie  [ ] GitHub Copilot  [ ] Cursor  [ ] ChatGPT  [ ] Claude
 - Release impact: [x] Forward-only (breaking changes allowed)  [ ] Backcompat required (only if explicitly demanded)
 
 Policies (must honor):
@@ -32,7 +32,7 @@ Policies (must honor):
 ---
 
 ## 2) Library Documentation Tasks
-Perform as a single, forward-only change set. The exact target paths depend on your library repo structure (e.g., docs/, guides/, or packages/<lib>/docs/). Do NOT put library-specific docs inside the RulesRepository submodule directory.
+Perform as a single, forward-only change set. The exact target paths depend on your library repo structure (e.g., docs/, guides/, or packages/<lib>/docs/). Do NOT put library-specific docs inside the Rules Repository submodule directory.
 
 1. Topic index (parent README)
    - Create or update a topic index README for this library’s rules directory.
@@ -57,7 +57,7 @@ Perform as a single, forward-only change set. The exact target paths depend on y
      - See-also links (index, related rules)
 
 4. Cross-links to enterprise topics
-   - Link to relevant RulesRepository indexes in your README to aid host projects:
+   - Link to relevant Rules Repository indexes in your README to aid host projects:
      - Web Components: rules/generative/frontend/webcomponents/README.md
      - Hibernate 7 Reactive: rules/generative/backend/hibernate/README.md
      - WebAwesome example index: rules/generative/frontend/webawesome/README.md
@@ -67,7 +67,7 @@ Perform as a single, forward-only change set. The exact target paths depend on y
    - Update CHANGELOG.md and bump version appropriately.
 
 6. README (library root) updates
-   - Add “How to use these rules” section pointing to your topic index and to the RulesRepository submodule usage.
+   - Add “How to use these rules” section pointing to your topic index and to the Rules Repository submodule usage.
 
 ---
 
@@ -88,7 +88,7 @@ Perform as a single, forward-only change set. The exact target paths depend on y
 - [ ] Parent topic README index created/updated with full component/topic coverage
 - [ ] Modular .md files created and linked; monoliths removed per Forward-Only policy
 - [ ] Component .rules.md files created/updated with usage, patterns, and see-also links
-- [ ] Cross-links to RulesRepository topic indexes included
+- [ ] Cross-links to Rules Repository topic indexes included
 - [ ] Release notes and version bump prepared (if applicable)
 - [ ] Root README updated with navigation and usage instructions
 - [ ] All links resolve
@@ -97,7 +97,7 @@ Perform as a single, forward-only change set. The exact target paths depend on y
 
 ## 5) Guardrails
 - No backwards compatibility stubs unless explicitly required; apply Forward-Only Change Policy fully.
-- Keep library docs in the library repo (outside any RulesRepository submodule).
+- Keep library docs in the library repo (outside any Rules Repository submodule).
 - Close loops: indexes ↔ rules files ↔ examples/implementations.
 
 ---

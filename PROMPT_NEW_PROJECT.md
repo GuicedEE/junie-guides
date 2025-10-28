@@ -1,6 +1,6 @@
-# 🚀 Starter Prompt — New Project Scaffolding with RulesRepository
+# 🚀 Starter Prompt — New Project Scaffolding with Rules Repository
 
-This is a paste-into-your-AI prompt for creating a brand-new project aligned to the RulesRepository enterprise rules. It scaffolds Pact → Rules → Guides → Implementation, configures the chosen AI engine, and links in the RulesRepository submodule.
+This is a paste-into-your-AI prompt for creating a brand-new project aligned to the Rules Repository enterprise rules. It scaffolds Pact → Rules → Guides → Implementation, configures the chosen AI engine, and links in the Rules Repository submodule.
 
 Use this prompt with: JetBrains AI (Junie), GitHub Copilot Chat, Cursor, ChatGPT, Claude.
 
@@ -26,8 +26,8 @@ Fill in the fields below before running the prompt.
 - Authors: ["<YOUR_NAME>", "AI"]
 
 Constraints and policies (do not change):
-- Use Markdown for docs. Respect RulesRepository RULES.md sections: Behavioral Agreements, Technical Commitments, Document Modularity Policy, and 6. Forward-Only Change Policy (no backwards compatibility).
-- Do not place project-specific docs inside the RulesRepository submodule directory.
+- Use Markdown for docs. Respect Rules Repository RULES.md sections: Behavioral Agreements, Technical Commitments, Document Modularity Policy, and 6. Forward-Only Change Policy (no backwards compatibility).
+- Do not place project-specific docs inside the Rules Repository submodule directory.
 
 ---
 
@@ -47,7 +47,7 @@ The AI must configure itself for this workspace before generating files.
   - Enable Repo Map and include this prompt in the session context.
 
 - If ChatGPT/Claude:
-  - Start with system note: "Follow RulesRepository RULES.md sections 4,5, Document Modularity, and 6 (forward-only). Use submodule. Close loops across artifacts."
+  - Start with system note: "Follow Rules Repository RULES.md sections 4,5, Document Modularity, and 6 (forward-only). Use submodule. Close loops across artifacts."
 
 Outcome: AI confirms it has applied these constraints.
 
@@ -105,7 +105,7 @@ Produce the following changes as a single, forward-only change set.
 8. README.md (root) — update
    - Project overview, architecture choice, selected tech stack
    - “Structure of Work” table (Pact → Rules → Guides → Implementation)
-   - Link to the RulesRepository submodule and to local artifacts
+   - Link to the Rules Repository submodule and to local artifacts
 
 ---
 
